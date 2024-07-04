@@ -7,7 +7,7 @@ from django.contrib.auth import authenticate, logout
 from rest_framework.authtoken.models import Token
 from rest_framework.decorators import action
 from rest_framework.response import Response
-from .permissions import IsAuthorOrReadOnly
+from .permissions import IsAuthorOrAdmin
 from django_filters.rest_framework import DjangoFilterBackend, DateFilter
 from django_filters import FilterSet, DateFilter
 
@@ -61,7 +61,7 @@ class PostFilter(FilterSet):
 class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all().order_by('-created_at')
     serializer_class = PostSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsAuthorOrReadOnly]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsAuthorOrAdmin]
     filter_backends = [DjangoFilterBackend, filters.OrderingFilter]
     filterset_class = PostFilter
     ordering_fields = ['created_at']
@@ -83,7 +83,7 @@ class PostViewSet(viewsets.ModelViewSet):
 class CommentViewSet(viewsets.ModelViewSet):
     queryset = Comment.objects.all().order_by('-created_at')
     serializer_class = CommentSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsAuthorOrReadOnly]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsAuthorOrAdmin]
 
     def perform_create(self, serializer):
         try:
