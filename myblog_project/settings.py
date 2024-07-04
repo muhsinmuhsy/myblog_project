@@ -157,7 +157,6 @@ EMAIL_HOST_USER = 'muhsinkoodali856@gmail.com'
 EMAIL_HOST_PASSWORD = 'yetedrvecukmvzgm'
 
 
-# Logging Configuration
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
