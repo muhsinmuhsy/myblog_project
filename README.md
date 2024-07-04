@@ -6,7 +6,7 @@
 1. Create a virtual environment and activate it (optional but recommended):
 
     ```bash
-    python -m venv env
+    python -m venv myenv
     ```
     #### On Windows use
    `env\Scripts\activate`
