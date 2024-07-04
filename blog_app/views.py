@@ -80,16 +80,6 @@ class PostViewSet(viewsets.ModelViewSet):
             return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         
 
-
-# To filter posts by a specific author: GET /api/posts/?author=1
-# To filter posts created on a specific date: GET /api/posts/?created_at=2023-07-01
-# To filter posts created after a specific date: GET /api/posts/?created_at__gt=2023-07-01
-# To filter posts created before a specific date: GET /api/posts/?created_at__lt=2023-07-01
-# GET /api/posts/?author=1&created_at__gt=2023-07-01
-# GET /api/posts/?created_at__gte=<start_date>&created_at__lte=<end_date>
-# GET /api/posts/?created_at__gte=2023-07-01&created_at__lte=2023-07-31
-
-
 class CommentViewSet(viewsets.ModelViewSet):
     queryset = Comment.objects.all().order_by('-created_at')
     serializer_class = CommentSerializer

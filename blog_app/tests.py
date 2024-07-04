@@ -12,7 +12,7 @@ class UserTests(TestCase):
         self.client = APIClient()
 
     def test_user_registration(self):
-        response = self.client.post('/api/user/register/', {
+        response = self.client.post('/api/users/register/', {
             'username': 'testuser',
             'password': 'testpassword123',
             'email': 'testuser@example.com'
@@ -23,7 +23,7 @@ class UserTests(TestCase):
 
     def test_user_login(self):
         user = User.objects.create_user(username='testuser', password='testpassword123')
-        response = self.client.post('/api/user/login/', {
+        response = self.client.post('/api/users/login/', {
             'username': 'testuser',
             'password': 'testpassword123'
         })
@@ -35,7 +35,7 @@ class UserTests(TestCase):
         user = User.objects.create_user(username='testuser', password='testpassword123')
         token = Token.objects.create(user=user)
         self.client.credentials(HTTP_AUTHORIZATION='Token ' + token.key)
-        response = self.client.post('/api/user/logout/')
+        response = self.client.post('/api/users/logout/')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         print(f"List Logout Data: {response.data}")
 

@@ -3,6 +3,16 @@
 
 All endpoints are prefixed with /api/ and Authentication is handled via token authentication
 
+```http
+  GET /api/
+```
+```JSON
+{
+    "users": "http://127.0.0.1:8000/api/users/",
+    "posts": "http://127.0.0.1:8000/api/posts/",
+    "comments": "http://127.0.0.1:8000/api/comments/"
+}
+```
 
 ## Authentication and User Endpoints
 
